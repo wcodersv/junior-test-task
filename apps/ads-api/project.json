@@ -1,0 +1,57 @@
+{
+  "name": "ads-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/ads-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/ads-api",
+        "main": "apps/ads-api/src/main.ts",
+        "tsConfig": "apps/ads-api/tsconfig.app.json",
+        "assets": ["apps/ads-api/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/ads-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "ads-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "ads-api:build:development"
+        },
+        "production": {
+          "buildTarget": "ads-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/ads-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/ads-api/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

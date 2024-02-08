@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  nginx:
+    ports:
+      - "8000:8000"
+    depends_on:
+      - ads-api
+      - frontend
+    build:
+      context: ./
+      dockerfile: apps/nginx/Dockerfile
+
+  ads-api:
+    container_name: ads-api
+    build:
+      context: ./
+      dockerfile: apps/ads-api/Dockerfile
+
+  frontend:
+    container_name: frontend
+    build:
+      context: ./
+      dockerfile: apps/frontend/Dockerfile
+    volumes:
+      - ./apps/frontend/src:/app/apps/frontend/src

@@ -1,0 +1,6 @@
+.next
+.vscode
+.nx
+dist
+node_modules
+coverage

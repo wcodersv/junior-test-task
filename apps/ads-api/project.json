@@ -16,6 +16,7 @@
         "tsConfig": "apps/ads-api/tsconfig.app.json",
         "assets": ["apps/ads-api/src/assets"],
         "isolatedConfig": true,
+        "generatePackageJson": true,
         "webpackConfig": "apps/ads-api/webpack.config.js"
       },
       "configurations": {

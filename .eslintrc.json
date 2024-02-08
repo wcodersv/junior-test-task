@@ -1,11 +1,21 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nx"],
+  "plugins": [
+    "@nx",
+    "@typescript-eslint",
+    "import"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-typescript/base"
+  ],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "rules": {
+        "semi": ["error", "always"],
         "@nx/enforce-module-boundaries": [
           "error",
           {

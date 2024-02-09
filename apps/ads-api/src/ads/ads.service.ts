@@ -5,6 +5,10 @@ import { db } from './db'
 const escapeRx = /[|\\{}()[\]^$+*?.]/g
 const isValidPrice = (price: number) => typeof price === 'number' && !isNaN(price)
 
+const checkStringFilter = (ad: Ad, filter: string | undefined, field: keyof Ad) => {
+  const fieldValue = (ad[field] as string | undefined)?.toLowerCase()
+  return filter ? fieldValue?.includes(filter.trim().toLowerCase()) : true
+}
 
 @Injectable()
 export class AdsService {
@@ -38,8 +42,8 @@ export class AdsService {
         (searchRx ? searchRx.test(ad.title) || searchRx.test(ad.description) : true) &&
         (isValidPrice(minPrice) ? ad.price >= minPrice : true) &&
         (isValidPrice(maxPrice) ? ad.price <= maxPrice : true) &&
-        (city ? ad.city_name?.includes(city) : true) &&
-        (district ? ad.district_name?.includes(city) : true)
+        checkStringFilter(ad, city, 'city_name') &&
+        checkStringFilter(ad, district, 'district_name')
     )
     return {
       total: results.length,

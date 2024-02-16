@@ -1,0 +1,37 @@
+.container {
+  margin: 0 auto;
+  padding: 40px;
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+
+  &_carousel {
+    width: 100%;
+    min-height: 400px;
+    max-height: 401px;
+  }
+
+  &_content {
+    padding-top: 20px;
+    width: 100%;
+
+    &_header {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-content: space-between;
+      padding-bottom: 40px;
+    }
+
+    &_city {
+      font-weight: 500;
+    }
+
+    &_price {
+      font-weight: 600;
+    }
+  }
+}

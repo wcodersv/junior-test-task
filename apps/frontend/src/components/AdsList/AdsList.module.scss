@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 30px;
+
+  &_header {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.5rem;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1;
+    }
+  }
+
+  &_list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 0fr));
+    gap: 20px;
+    justify-content: center;
+    margin: 0 190px;
+
+    @media (max-width: 520px) {
+      grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+  }
+}

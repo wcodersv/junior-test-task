@@ -41,7 +41,6 @@ export class AdsListQueryDto extends PaginationInputDto {
   })
   @IsOptional()
   @Type(() => String)
-  @IsNumber()
   city?: string;
 
 
@@ -52,6 +51,5 @@ export class AdsListQueryDto extends PaginationInputDto {
   })
   @IsOptional()
   @Type(() => String)
-  @IsNumber()
   district?: string
 }
